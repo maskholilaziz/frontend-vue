@@ -1,6 +1,23 @@
 <script setup>
+// import ref and onMounted
+import { ref, onMounted } from "vue";
+
 // import sidebar component
 import SidebarMenu from "../../../components/SidebarMenu.vue";
+
+// import js cookie
+import Cookies from "js-cookie";
+
+// init user
+const user = ref(null);
+
+onMounted(() => {
+  // get user from cookie
+  const userData = Cookies.get("user");
+  if (userData) {
+    user.value = JSON.parse(userData);
+  }
+});
 </script>
 
 <template>
@@ -13,7 +30,8 @@ import SidebarMenu from "../../../components/SidebarMenu.vue";
         <div class="card border-0 rounded shadow-sm">
           <div class="card-header">DASHBOARD</div>
           <div class="card-body">
-            Selamat datang di halaman dashboard, <strong></strong>
+            Selamat datang di halaman dashboard,
+            <strong>{{ user?.name }}</strong>
           </div>
         </div>
       </div>
