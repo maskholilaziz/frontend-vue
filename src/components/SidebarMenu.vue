@@ -1,4 +1,24 @@
 <script setup>
+// import useRouter from vue router
+import { useRouter } from "vue-router";
+
+// initialize router
+const router = useRouter();
+
+// import Cookies
+import Cookies from "js-cookie";
+
+// method logout
+const logout = () => {
+  // remove token and user on cookies
+  Cookies.remove("token");
+  Cookies.remove("user");
+
+  // redirect ke halaman login
+  router.push({
+    name: "login",
+  });
+};
 </script>
 
 <template>
@@ -12,7 +32,12 @@
           >Dashboard</router-link
         >
         <a href="#" class="list-group-item list-group-item-action">Users</a>
-        <a href="#" class="list-group-item list-group-item-action">Logout</a>
+        <a
+          href="#"
+          @click="logout"
+          class="list-group-item list-group-item-action"
+          >Logout</a
+        >
       </div>
     </div>
   </div>
