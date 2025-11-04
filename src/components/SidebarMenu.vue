@@ -31,7 +31,11 @@ const logout = () => {
           class="list-group-item list-group-item-action"
           >Dashboard</router-link
         >
-        <a href="#" class="list-group-item list-group-item-action">Users</a>
+        <router-link
+          :to="{ name: 'admin.users.index' }"
+          class="list-group-item list-group-item-action"
+          >Users</router-link
+        >
         <a
           href="#"
           @click="logout"
