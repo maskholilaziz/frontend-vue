@@ -32,6 +32,15 @@ onMounted(() => {
   // call method "fetchDataUsers"
   fetchDataUser();
 });
+
+// method deleteUser
+const deleteUser = async (id) => {
+  // delete user with API
+  api.defaults.headers.common["Authorization"] = token;
+  await api.delete(`/admin/users/${id}`).then(() => {
+    fetchDataUser();
+  });
+};
 </script>
 <template>
   <div class="container mt-5 mb-5">
@@ -81,6 +90,7 @@ onMounted(() => {
                       >EDIT</router-link
                     >
                     <button
+                      @click="deleteUser(user.id)"
                       class="btn btn-sm btn-danger rounded-sm shadow border-0"
                     >
                       DELETE
