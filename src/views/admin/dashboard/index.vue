@@ -1,40 +1,48 @@
-<script setup>
-// import ref and onMounted
-import { ref, onMounted } from "vue";
-
-// import sidebar component
-import SidebarMenu from "../../../components/SidebarMenu.vue";
-
-// import js cookie
-import Cookies from "js-cookie";
-
-// init user
-const user = ref(null);
-
-onMounted(() => {
-  // get user from cookie
-  const userData = Cookies.get("user");
-  if (userData) {
-    user.value = JSON.parse(userData);
-  }
-});
-</script>
+<script setup></script>
 
 <template>
-  <div class="container mt-5 mb-5">
-    <div class="row">
-      <div class="col-md-3">
-        <SidebarMenu />
-      </div>
-      <div class="col-md-9">
-        <div class="card border-0 rounded shadow-sm">
-          <div class="card-header">DASHBOARD</div>
-          <div class="card-body">
-            Selamat datang di halaman dashboard,
-            <strong>{{ user?.name }}</strong>
+  <div>
+    <!--begin::Row-->
+    <div class="row g-5 g-lg-10">
+      <!--begin::Col-->
+      <div class="col-xl-12">
+        <!--begin::Tiles Widget 2-->
+        <div
+          class="card h-175px bgi-no-repeat bgi-size-contain h-200px mb-5 mb-lg-10"
+          style="
+            background-color: #1b283f;
+            background-position: right;
+            background-image: url('/assets/media/svg/misc/taieri.svg');
+          "
+        >
+          <!--begin::Body-->
+          <div class="card-body d-flex flex-column justify-content-between">
+            <!--begin::Title-->
+            <h2 class="text-white fw-bold mb-5">
+              <span class="lh-lg"
+                >Brilliant Ideas<br />for Your Web Application</span
+              >
+            </h2>
+            <!--end::Title-->
+
+            <!--begin::Action-->
+            <div class="m-0">
+              <a
+                href="#"
+                class="btn btn-danger fw-semibold px-6 py-3"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal_create_campaign"
+                >Create Campaign</a
+              >
+            </div>
+            <!--begin::Action-->
           </div>
+          <!--end::Body-->
         </div>
+        <!--end::Tiles Widget 2-->
       </div>
+      <!--end::Col-->
     </div>
+    <!--end::Row-->
   </div>
 </template>
